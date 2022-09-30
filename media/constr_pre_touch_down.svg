@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="29mm"
+   height="33.5mm"
+   viewBox="0 0 29 33.5"
+   version="1.1"
+   id="svg5630"
+   inkscape:version="1.0.2 (1.0.2+r75+1)"
+   sodipodi:docname="constr_pre_touch_down.svg">
+  <defs
+     id="defs5624" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="5.6568543"
+     inkscape:cx="46.450184"
+     inkscape:cy="94.491262"
+     inkscape:document-units="mm"
+     inkscape:current-layer="g2437"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1025"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5627">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <style
+     type="text/css"
+     id="style990"><![CDATA[
+
+      @keyframes ballAndHandAnimation {
+        100% {
+          transform-origin: 0px 0px;
+          transform: translate(-4px, -10px) rotate(0);
+        }
+      }
+
+      @keyframes handAnimation {
+        100% {
+          transform-origin: 0px 0px;
+          transform: translate(0.75px, 4.5px) rotate(0);
+        }
+      }
+
+      g.motion-ball-and-hand{
+        animation:ballAndHandAnimation 2000ms infinite reverse ease-in-out;
+      }
+
+      g.motion-hand{
+        animation:handAnimation 2000ms infinite reverse ease-in-out;
+      }
+    ]]></style>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="hand_and_ball"
+       class="motion-ball-and-hand"
+       transform="translate(0.34807354,-1.5627682)">
+      <g
+         id="ball"
+         transform="matrix(-0.38856467,0.0736188,0.07326738,0.38863124,-28.213507,-0.86605704)">
+        <path
+           d="m -86.083,81.234 c 0.001,8.96 -7.236,16.231 -16.189,16.271 -8.952,0.041 -16.256,-7.166 -16.334,-16.126 -0.083,-8.959 7.09,-16.295 16.044,-16.418 8.952,-0.118 16.317,7.026 16.476,15.981"
+           style="fill:#aa0000;fill-opacity:1;fill-rule:nonzero;stroke:#880000;stroke-width:1.26429;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="path3281" />
+      </g>
+      <g
+         id="hand_and_normal"
+         class="motion-hand">
+        <g
+           id="hand"
+           transform="rotate(16.194037,20.921444,-34.156702)">
+          <g
+             id="g3291"
+             transform="matrix(-0.35238266,0.17894652,0.17874579,0.35277777,-21.262734,3.0632312)">
+            <path
+               d="m -133.656,82.996 21.806,42.912"
+               style="fill:none;stroke:#000000;stroke-width:1.7706;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+               id="path3293" />
+          </g>
+          <g
+             id="g3295"
+             transform="matrix(-0.35238266,0.17894652,0.17874579,0.35277777,-21.262734,3.0632312)">
+            <path
+               d="m -111.85,125.908 18.872,-0.003"
+               style="fill:none;stroke:#000000;stroke-width:1.7706;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+               id="path3297" />
+          </g>
+          <g
+             id="g3299"
+             transform="matrix(-0.35238266,0.17894652,0.17874579,0.35277777,-21.262734,3.0632312)">
+            <path
+               d="m -71.167,82.998 -21.811,42.907"
+               style="fill:none;stroke:#000000;stroke-width:1.7706;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+               id="path3301" />
+          </g>
+        </g>
+        <g
+           id="g2413"
+           transform="rotate(16.194037,24.244335,12.539201)">
+          <g
+             id="g2423">
+            <g
+               id="g2437"
+               transform="rotate(-36.236353,10.086193,7.1773535)">
+              <g
+                 id="g3237"
+                 transform="matrix(-0.06938607,0.422095,-0.41494734,-0.07625733,-10.220692,11.151963)"
+                 style="stroke-width:0.931016">
+                <path
+                   d="m 36.251,-48.661 -3.313,-1.219 3.315,-1.219 c -0.529,0.721 -0.527,1.704 -0.002,2.438 z"
+                   style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.176562;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+                   id="path3239" />
+              </g>
+              <g
+                 id="e_h"
+                 transform="rotate(21.230365,30.791592,-7.9309605)">
+                <text
+                   transform="matrix(0.98806343,-0.02224804,0.02277729,1.0115679,0,0)"
+                   style="font-variant:normal;font-weight:bold;font-size:4.15403px;font-family:'Times New Roman';-inkscape-font-specification:TimesNewRomanPS-BoldMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.352748"
+                   id="text3313"
+                   x="19.681993"
+                   y="39.102123"><tspan
+                     x="19.681993"
+                     y="39.102123"
+                     id="tspan3311"
+                     style="stroke-width:0.352748">e</tspan></text>
+                <text
+                   transform="matrix(0.98806343,-0.02224804,0.02277729,1.0115679,0,0)"
+                   style="font-style:italic;font-variant:normal;font-size:2.70009px;font-family:'Times New Roman';-inkscape-font-specification:TimesNewRomanPS-ItalicMT;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.352748"
+                   id="text3317"
+                   x="21.523708"
+                   y="39.932919"><tspan
+                     x="21.523708"
+                     y="39.932919"
+                     id="tspan3315"
+                     style="stroke-width:0.352748">h</tspan></text>
+              </g>
+              <g
+                 id="g3233"
+                 transform="matrix(0.35815585,-0.10949923,0.11208506,0.36661371,-10.220692,11.151963)"
+                 style="stroke-width:0.931016">
+                <path
+                   d="M 25.32,73.754 32.504,59.578"
+                   style="fill:none;stroke:#000000;stroke-width:1.05564;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+                   id="path3235" />
+              </g>
+              <g
+                 id="g3233-3"
+                 transform="matrix(1.6305186,-0.50221488,0.49091837,1.6177451,-70.325113,-71.875995)"
+                 style="stroke-width:0.0883221;stroke-miterlimit:4;stroke-dasharray:none">
+                <path
+                   d="m 26.897683,70.594414 4.976226,-9.830052"
+                   style="fill:none;stroke:#000000;stroke-width:0.0883221;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.529935, 0.0883221;stroke-dashoffset:0;stroke-opacity:1"
+                   id="path3235-3" />
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

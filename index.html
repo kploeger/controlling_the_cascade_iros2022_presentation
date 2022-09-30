@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+
+		<title>Robot Juggling</title>
+
+		<meta name="description" content="Controlling the Cascade">
+		<meta name="author" content="Kai Ploeger">
+
+        <!--<meta name="apple-mobile-web-app-capable" content="yes">-->
+        <!--<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+        <link rel="stylesheet" href="dist/theme/white.css" id="theme">
+        <!--<link rel="stylesheet" href="dist/theme/black.css" id="theme">-->
+
+		<!-- highlighting of code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+
+        <!--IAS theme-->
+        <!--<link rel="stylesheet" href="dist/theme/ias-override.css">-->
+
+	</head>
+
+
+   	<body>
+		<div class="reveal">
+			<div class="slides">
+
+                <!------------------------------------------->
+                <!--              Title Page               -->
+                <!------------------------------------------->
+
+                <section data-transition="fade">
+                    <img src="./media/Juggling_Robot.jpg" alt="Juggling Robot" style="height: 450px; margin: 0 auto 0.5rem auto; background: transparent;" class="demo-logo">
+                    <h3>Controlling the Cascade</h3>
+                    <h4>Kinematic Planning for N-ball Toss Juggling</h4>
+					<p>
+                        <small><a href="https://www.ias.informatik.tu-darmstadt.de/Team/KaiPloeger">Kai Ploeger</a></small>
+					</p>
+				</section>
+
+
+                <!------------------------------------------->
+                <!--          Problem Definition           -->
+                <!------------------------------------------->
+
+                <section data-transition="fade">
+                    <section data-auto-animate data-transition="fade">
+                        <video src="./media/toss_vs_paddle.mov" data-autoplay="" data-paused-by-reveal="" style="height: 500px;"></video>
+                    </section>
+                </section>
+
+
+                <!------------------------------------------->
+                <!--             A Closer Look             -->
+                <!------------------------------------------->
+
+                <section>
+                    <section>
+                        <img src="./media/cascade.svg" style="height: 300px"> </img>
+                    </section>
+                    <section>
+                        <img src="./media/hand_cycle.svg" style="height: 300px"> </img>
+                    </section>
+                    <!-- <section>
+                        \[
+                            \begin{aligned}
+                                R = \frac{T_{\mathrm{d}}}{T_{\mathrm{c}}} = 0.5
+                            \end{aligned}
+                        \]
+                        \[
+                            \begin{aligned}
+                                N_b < \Big \lfloor \frac{d_f}{r_b} + 2R \Big \rfloor
+                            \end{aligned}
+                        \]
+                    </section> -->
+                </section>
+
+
+                <!------------------------------------------->
+                <!--        Juggling in Task Space         -->
+                <!------------------------------------------->
+
+                <section>
+
+                    <section>
+                        <img src="./media/constr_touch_down.svg" style="width: 250px"> </img>
+                        \[
+                            \begin{aligned}
+                                \mathbf{0} = \mathbf{x}(\tilde{t}_{\mathrm{TD}}) - \tilde{\mathbf{b}}_{\mathrm{TD}}
+                            \end{aligned}
+                        \]
+                    </section>
+
+
+                    <section>
+                        <img src="./media/constr_take_off.svg" style="width: 500px"> </img>
+                        \[
+                            \begin{aligned}
+                                \mathbf{0} &= \mathbf{x}(t_{\mathrm{TO}}) - \mathbf{b}_{\mathrm{TO,des}} \\
+                                \mathbf{0} &= \mathbf{b}_{\mathrm{TO,des}} + \dot{\mathbf{x}}(t_{\mathrm{TO}})T_f + \frac{1}{2}\mathbf{g}T_f^2 - \mathbf{b}_{\mathrm{TD,des}} \\
+                                \mathbf{0} &= \ddot{\mathbf{x}}(t_{\mathrm{TO}}) - \mathbf{g}
+                            \end{aligned}
+                        \]
+                    </section>
+
+                    <section>
+                            <!--TODO: Improve this equation!-->
+                        \[
+                            \begin{aligned}
+                                \min_{\{\dddot{\mathbf{x}}_0, \dots, \dddot{\mathbf{x}}_{K_c-1}\}} & \sum_{k=0}^{K_c} \ddot{\mathbf{x}}_k^T \ddot{\mathbf{x}}_k \text{ s.t.} \\
+                                (\mathbf{x}_0, \dot{\mathbf{x}}_0, \ddot{\mathbf{x}}_0) &=  (\mathbf{x}_{\mathrm{TO}-1}, \dot{\mathbf{x}}_{\mathrm{TO}-1}, \ddot{\mathbf{x}}_{\mathrm{TO}-1}) \\
+                                \mathbf{h}(\mathbf{x}_{k}, \dot{\mathbf{x}}_{k}, \ddot{\mathbf{x}}_{k}, \mathbf{x}_{k}) &= \mathbf{0} \\
+                                -\dddot{x}_{i,\mathrm{max}} &\leq \dddot{x}_{k,i} \leq \dddot{x}_{i,\mathrm{max}}
+                            \end{aligned}
+                        \]
+                    </section>
+
+                    <section>
+                        <video src="./media/5b_floating_no_constraints_quarter_speed.mov" data-autoplay="" data-paused-by-reveal=""></video>
+                    </section>
+
+                    <section>
+                        <img src="./media/constr_pre_touch_down.svg" style="height: 400px"> </img>
+                        \[
+                            \begin{aligned}
+                                \mathbf{0} = (\dot{\mathbf{x}}(\tilde{t}_{\mathrm{TD}}-\tau) - \tilde{\dot{\mathbf{b}}}(\tilde{t}_{\mathrm{TD}}-\tau)) \times \mathbf{e}_{h}
+                            \end{aligned}
+                        \]
+                    </section>
+
+                    <section>
+                        <img src="./media/constr_pre_touch_down_approx.svg" style="height: 400px"> </img>
+                        \[
+                            \begin{aligned}
+                                \mathbf{0} = \dot{\mathbf{x}}(\tilde{t}_{\mathrm{TD}}-\tau) \times \tilde{\dot{\mathbf{b}}}(\tilde{t}_{\mathrm{TD}}-\tau)
+                            \end{aligned}
+                        \]
+                    </section>
+
+                    <section>
+                        <video src="./media/5b_floating_td_constraints_time_ramped.mov" data-autoplay="" data-paused-by-reveal=""></video>
+                    </section>
+
+                    <section>
+                        <img src="./media/constr_post_take_off_animated.svg" style="width: 600px"> </img>
+                        \[
+                            \begin{aligned}
+                                \mathbf{0} = (\ddot{\mathbf{x}}(t_{\mathrm{TO}}+\tau) - \mathbf{g}) \times \mathbf{e}_{h}
+                            \end{aligned}
+                        \]
+                    </section>
+
+                    <!--<section>-->
+                        <!--<img src="./media/constr_post_take_off.svg" style="height: 400px"> </img>-->
+                        <!--\[-->
+                            <!--\begin{aligned}-->
+                                <!--\mathbf{0} = (\ddot{\mathbf{x}}(t_{\mathrm{TO}}+\tau) - \mathbf{g}) \times \mathbf{e}_{h}-->
+                            <!--\end{aligned}-->
+                        <!--\]-->
+                    <!--</section>-->
+
+                    <section>
+                        <video src="./media/5b_floating_all_constraints_time_ramped.mov" data-autoplay="" data-paused-by-reveal=""></video>
+                    </section>
+
+
+
+                </section>
+
+
+                <!------------------------------------------->
+                <!--        Juggling in Joint Space        -->
+                <!------------------------------------------->
+
+                <section>
+                    <section data-auto-animate>
+                        <h3 data-id="title">Juggling in Joint Space</h3>
+                        <div class="r-hstack">
+                            <div data-id="tex_task_space_opt">
+                                \[
+                                    \begin{aligned}
+                                        \min_{\{\dddot{\mathbf{x}}_0, \dots, \dddot{\mathbf{x}}_{K_c-1}\}} & \sum_{k=0}^{K_c} \ddot{\mathbf{x}}_k^T \ddot{\mathbf{x}}_k \text{ s.t.} \\
+                                        (\mathbf{x}_0, \dot{\mathbf{x}}_0, \ddot{\mathbf{x}}_0) &=  (\mathbf{x}_{\mathrm{TO}-1}, \dot{\mathbf{x}}_{\mathrm{TO}-1}, \ddot{\mathbf{x}}_{\mathrm{TO}-1}) \\
+                                        \mathbf{h}(\mathbf{x}_{k}, \dot{\mathbf{x}}_{k}, \ddot{\mathbf{x}}_{k}, \mathbf{x}_{k}) &= \mathbf{0} \\
+                                        -\dddot{x}_{i,\mathrm{max}} &\leq \dddot{x}_{k,i} \leq \dddot{x}_{i,\mathrm{max}}
+                                    \end{aligned}
+                                \]
+                            </div>
+                        </div>
+                    </section>
+
+                    <section data-auto-animate>
+                        <h3 data-id="title">Juggling in Joint Space</h3>
+                        <div class="r-hstack">
+                            <div data-id="tex_task_space_opt">
+                                \[
+                                    \tiny
+                                    \begin{aligned}
+                                    \min_{\{\dddot{\mathbf{x}}_0, \dots, \dddot{\mathbf{x}}_{K_c-1}\}} & \sum_{k=0}^{K_c} \ddot{\mathbf{x}}_k^T \ddot{\mathbf{x}}_k \text{ s.t.} \\
+                                        (\mathbf{x}_0, \dot{\mathbf{x}}_0, \ddot{\mathbf{x}}_0) &=  (\mathbf{x}_{\mathrm{TO}-1}, \dot{\mathbf{x}}_{\mathrm{TO}-1}, \ddot{\mathbf{x}}_{\mathrm{TO}-1}) \\
+                                        \mathbf{h}(\mathbf{x}_{k}, \dot{\mathbf{x}}_{k}, \ddot{\mathbf{x}}_{k}, \mathbf{x}_{k}) &= \mathbf{0} \\
+                                        -\dddot{x}_{i,\mathrm{max}} &\leq \dddot{x}_{k,i} \leq \dddot{x}_{i,\mathrm{max}}
+                                    \end{aligned}
+                                \]
+                            </div>
+                            <div class="fragment">
+                                \[
+                                    \tiny
+                                    \begin{aligned}
+                                        \min_{\{\dddot{\mathbf{q}}_0, \dots, \dddot{\mathbf{q}}_{K_c-1}\}} & \sum_{k=0}^{K_c} \ddot{\mathbf{q}}_k^T \ddot{\mathbf{q}}_k \text{ s.t.} \\
+                                        (\mathbf{q}_0, \dot{\mathbf{q}}_0, \ddot{\mathbf{q}}_0) &=  (\mathbf{q}_{\mathrm{TO}-1}, \dot{\mathbf{q}}_{\mathrm{TO}-1}, \ddot{\mathbf{q}}_{\mathrm{TO}-1}) \\
+                                        \mathbf{h}(\mathbf{q}_{k}, \dot{\mathbf{q}}_{k}, \ddot{\mathbf{q}}_{k}, \mathbf{q}_{k}) &= 0 \\
+                                        -\dddot{q}_{i,\mathrm{max}} &\leq \dddot{q}_{k,i} \leq \dddot{q}_{i,\mathrm{max}}
+                                    \end{aligned}
+                                \]
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <video src="./media/5_ball_arms_time_ramped.mov" data-autoplay="" data-paused-by-reveal=""></video>
+                    </section>
+
+                </section>
+
+
+                <!------------------------------------------->
+                <!--                Results                -->
+                <!------------------------------------------->
+
+                <section>
+                <!-- Are Constraints Necessary -->
+                    <section>
+                        <div class="r-hstack">
+                            <img src="./media/constr_post_take_off_animated_cropped.svg" style="height: 600px"> </img>
+                            <img src="./media/constr_pre_touch_down.svg" style="height: 600px"> </img>
+                        </div>
+                    </section>
+
+                    <section>
+                        <img style="width:1000px" src="./media/necessary_constraints.svg"></img>
+                    </section>
+
+                    <section>
+                        <div data-id="tex_task_space_opt">
+                             \[
+                                \begin{aligned}
+                                    \min_{\{\dddot{\mathbf{q}}_0, \dots, \dddot{\mathbf{q}}_{K_c-1}\}} & \sum_{k=0}^{K_c} \ddot{\mathbf{q}}_k^T \ddot{\mathbf{q}}_k \text{ s.t.} \\
+                                    (\mathbf{q}_0, \dot{\mathbf{q}}_0, \ddot{\mathbf{q}}_0) &=  (\mathbf{q}_{\mathrm{TO}-1}, \dot{\mathbf{q}}_{\mathrm{TO}-1}, \ddot{\mathbf{q}}_{\mathrm{TO}-1}) \\
+                                    \mathbf{h}(\mathbf{q}_{k}, \dot{\mathbf{q}}_{k}, \ddot{\mathbf{q}}_{k}, \mathbf{q}_{k}) &= 0 \\
+                                    -\dddot{q}_{i,\mathrm{max}} &\leq \dddot{q}_{k,i} \leq \dddot{q}_{i,\mathrm{max}}
+                                \end{aligned}
+                            \]
+                        </div>
+                    </section>
+
+                    <section data-transition="fade">
+                        <video src="./media/5_ball_quarter_speed.mov" data-autoplay="" data-paused-by-reveal=""></video>
+                    </section>
+
+                    <section data-transition="fade">
+                        <video src="./media/7_ball_quarter_speed.mov" data-autoplay="" data-paused-by-reveal=""></video>
+                    </section>
+
+                    <section data-transition="fade">
+                        <video src="./media/9_ball_quarter_speed.mov" data-autoplay="" data-paused-by-reveal=""></video>
+                    </section>
+
+                    <section data-transition="fade">
+                        <video src="./media/11_ball_quarter_speed.mov" data-autoplay="" data-paused-by-reveal=""></video>
+                    </section>
+
+                    <section>
+                        <video src="./media/7_ball_noise_quater_speed.mov" data-autoplay="" data-paused-by-reveal=""></video>
+                    </section>
+
+                    <section data-transition="fade">
+                        <img style="width:1000px" src="./media/catches_over_noise_only_col.svg"></img>
+                    </section>
+
+                    <section data-transition="fade">
+                        <img style="width:1000px" src="./media/catches_over_noise.svg"></img>
+                    </section>
+
+                    <!-- Reaching the Theoretical Limit -->
+
+                    <section data-transition="fade">
+                        <video src="./media/13_ball_quarter_speed.mov" data-autoplay="" data-paused-by-reveal=""></video>
+                    </section>
+
+                    <section data-transition="fade">
+                        <video src="./media/15_ball_quarter_speed.mov" data-autoplay="" data-paused-by-reveal=""></video>
+                    </section>
+
+                    <section data-transition="fade" data-auto-animate>
+                        <img src="./media/cascade.svg" style="height: 300px" data-id="cascade_pi"> </img>
+                        \[
+                            \begin{aligned}
+                                N_b \leq \Big \lfloor \frac{d_f}{r_b} + 2R \Big \rfloor
+                            \end{aligned}
+                        \]
+                    </section>
+                    <section data-transition="fade" data-auto-animate>
+                        <img src="./media/cascade.svg" style="height: 300px" data-id="cascade_pi"> </img>
+                        \[
+                            \begin{aligned}
+                                N_b \leq \Big \lfloor \frac{0.62}{0.0375} + 1 \Big \rfloor
+                            \end{aligned}
+                        \]
+                    </section>
+                    <section data-transition="fade" data-auto-animate>
+                        <img src="./media/cascade.svg" style="height: 300px" data-id="cascade_pi"> </img>
+                        \[
+                            \begin{aligned}
+                                N_b \leq 17
+                            \end{aligned}
+                        \]
+                    </section>
+
+                    <section data-transition="fade">
+                        <video src="./media/17_ball_quarter_speed.mov" data-autoplay="" data-paused-by-reveal=""></video>
+                    </section>
+
+
+                    <!-- Fountians -->
+
+                    <section>
+                        <video src="./media/6_ball_quarter_speed.mov" data-autoplay="" data-paused-by-reveal=""></video>
+                    </section>
+
+
+                </section>
+
+            </div>
+        </div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/zoom/zoom.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/search/search.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+        <script src="plugin/math/math.js"></script>
+		<script>
+			Reveal.initialize({ controls: true, progress: true, center: true, hash: true,
+				plugins: [ RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight, RevealMath.MathJax3 ]
+			});
+		</script>
+	</body>
+</html>

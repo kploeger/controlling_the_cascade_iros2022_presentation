@@ -1,0 +1,30 @@
+body:after {
+content: url(./logos/IAS_vectorized.svg);
+position: fixed;
+top: 2em;
+right: 8em;
+size: 30%;
+}
+
+/*body:after {*/
+/*content: url(../../media/IAS_vectorized.svg);*/
+/*position: fixed;*/
+/*top: 3.5em;*/
+/*left: 3.5em;*/
+/*size: 30%;*/
+/*}*/
+
+
+/*[>box-shadow: 5px 5px 10px #000; <]*/
+
+/*body:after {*/
+  /*background-image: url('../../media/IAS_vectorized.svg);*/
+  /*background-repeat: no-repeat;*/
+  /*background-position: top left, bottom right;*/
+  /*background-size: auto 30%, 20% 20%;*/
+/*}*/
+
+/*<script src="plugin/math/math.js"></script>*/
+/*<script>*/
+  /*Reveal.initialize({ plugins: [ RevealMath.KaTeX ] });*/
+/*</script>*/
